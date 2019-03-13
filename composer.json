@@ -1,0 +1,26 @@
+{
+    "name": "xvladqt/faker-lorem-flickr",
+    "description": "loremflickr.com provider for Faker",
+    "keywords": [
+        "faker",
+        "loremflickr.com",
+        "provider"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladyslav Volynets",
+            "email": "xvladxtreme@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.3.3 || ^7.0",
+        "fzaninotto/faker": "~1"
+    },
+    "autoload": {
+      "psr-4": {
+        "Xvladqt\\Faker\\": "."
+      }
+    }
+}
