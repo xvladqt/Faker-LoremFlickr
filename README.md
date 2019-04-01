@@ -1,7 +1,8 @@
-Faker-LoremFlickr
+Faker-LoremFlickr Provider for Faker
 ===============================
 
-loremflickr provider for Faker
+[![Build Status](https://travis-ci.org/xvladxtremal/Faker-LoremFlickr.svg?branch=master)](https://travis-ci.org/xvladxtremal/Faker-LoremFlickr)
+
 [loremflickr.com](http://loremflickr.com/) provider for [Faker](https://github.com/fzaninotto/Faker).
 
 ## Install
