@@ -23,7 +23,7 @@ class LoremFlickrProvider extends BaseProvider
      *
      * @param integer $width
      * @param integer $height
-     * @param array|null $keywords
+     * @param array|null|bool $keywords
      * @param bool $randomize
      * @param bool $gray
      *
@@ -40,11 +40,13 @@ class LoremFlickrProvider extends BaseProvider
         $url .= "/{$width}/{$height}";
 
         if (is_array($keywords) && count($keywords)) {
-            $url .= '/'.implode(',', keywords);
+            $url .= '/'.implode(',', $keywords);
         }
 
         if ($randomize) {
-            $url .= '?random=' . static::randomNumber(5, true);
+            $url .= '?random=1';
+        }else{
+            $url .= '?lock=1';
         }
 
         return $baseUrl . $url;

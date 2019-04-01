@@ -18,6 +18,9 @@
         "php": "^5.3.3 || ^7.0",
         "fzaninotto/faker": "~1"
     },
+    "require-dev": {
+      "phpunit/phpunit": "*"
+    },
     "autoload": {
       "psr-4": {
         "Xvladqt\\Faker\\": "."
