@@ -17,7 +17,7 @@ $ composer require xvladqt/faker-lorem-flickr
 
 ```php
 $faker = Faker\Factory::create();
-$faker->addProvider(new Bluemmb\Faker\PicsumPhotosProvider($faker));
+$faker->addProvider(new Xvladqt\Faker\LoremFlickrProvider($faker));
 
 $faker->imageUrl($width = 640, $height = 480) // 'http://loremflickr.com/640/480/'
 $faker->imageUrl($width, $height, ['cats'])     // 'http://loremflickr.com/640/480/cats/'
