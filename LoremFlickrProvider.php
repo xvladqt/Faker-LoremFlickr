@@ -41,7 +41,9 @@ class LoremFlickrProvider extends BaseProvider
 
         if (is_array($keywords) && count($keywords)) {
             $url .= '/'.implode(',', $keywords);
-        }
+        }else{
+        	$url .= '/kitten';
+		}
 
         if ($randomize) {
             $url .= '?random=1';
