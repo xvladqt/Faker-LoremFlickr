@@ -13,22 +13,23 @@ use Faker\Provider\Base as BaseProvider;
  */
 class LoremFlickrProvider extends BaseProvider
 {
-
-    /**
-     * Generate the URL that will return a random image
-     *
-     * Set randomize to false to remove the random GET parameter at the end of the url.
-     *
-     * @example 'https://loremflickr.com/640/480?random=1'
-     *
-     * @param integer $width
-     * @param integer $height
-     * @param array|null|bool $keywords
-     * @param bool $randomize
-     * @param bool $gray
-     *
-     * @return string
-     */
+	
+	/**
+	 * Generate the URL that will return a random image
+	 *
+	 * Set randomize to false to remove the random GET parameter at the end of the url.
+	 *
+	 * @param  integer  $width
+	 * @param  integer  $height
+	 * @param  array|null|bool  $keywords
+	 * @param  bool  $randomize
+	 * @param  bool  $gray
+	 *
+	 * @return string
+	 * @throws \Exception
+	 * @example 'https://loremflickr.com/640/480?random=1'
+	 *
+	 */
     public static function imageUrl($width = 640, $height = 480, $keywords = null, $randomize = true, $gray = false)
     {
         $baseUrl = "https://loremflickr.com";
@@ -48,7 +49,7 @@ class LoremFlickrProvider extends BaseProvider
         if ($randomize) {
             $url .= '?random=1';
         }else{
-            $url .= '?lock=1';
+            $url .= '?lock='.\random_int(1,1024);
         }
 
         return $baseUrl . $url;
