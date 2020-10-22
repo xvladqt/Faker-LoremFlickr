@@ -47,7 +47,7 @@ class LoremFlickrProvider extends BaseProvider
 		}
 
         if ($randomize) {
-            $url .= '?random=1';
+            $url .= '?random='.\random_int(1,1024);
         }else{
             $url .= '?lock='.\random_int(1,1024);
         }
