@@ -40,9 +40,6 @@ jobs:
     - os: linux
       dist: trusty
       php: 5.4
-    - os: linux
-      dist: trusty
-      php: hhvm
 
 notifications:
   email: false
