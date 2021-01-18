@@ -15,7 +15,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^5.3.3 || ^7.0",
+        "php": "^5.4 || ^7.0 || ^8.0",
         "fakerphp/faker": "~1"
     },
     "require-dev": {
