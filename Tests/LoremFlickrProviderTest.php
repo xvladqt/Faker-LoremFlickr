@@ -18,54 +18,53 @@ class LoremFlickrProviderTest extends TestCase
     {
         $url = LoremFlickrProvider::imageUrl($width, $height, $keywords, $randomize, $gray);
 
-        $this->assertSame("https://loremflickr.com/".$expected, $url);
+        $this->assertStringStartsWith("https://loremflickr.com/".$expected, $url);
     }
 
     public function imageUrlDataProvider()
     {
         return [
             [
-                '640/480?random=1',
-
+                '640/480/kitten?random=',
             ],
             [
-                '100/480?random=1',
+                '100/480/kitten?random=',
                 100,
             ],
             [
-                '100/100?random=1',
+                '100/100/kitten?random=',
                 100, 100,
             ],
             [
-                'g/100/100?lock=1',
+                'g/100/100/kitten?lock=',
                 100, 100, false, false, true,
             ],
             [
-                '100/100/cats?random=1',
+                '100/100/cats?random=',
                 100, 100, array('cats')
             ],
             [
-                '100/100/cats,dogs?random=1',
+                '100/100/cats,dogs?random=',
                 100, 100, array('cats', 'dogs')
             ],
             [
-                '100/100?random=1',
+                '100/100/kitten?random=',
                 100, 100, false, true,
             ],
             [
-                'g/100/100?random=1',
+                'g/100/100/kitten?random=',
                 100, 100, false, true, true,
             ],
             [
-                '100/100?lock=1',
+                '100/100/kitten?lock=',
                 100, 100, false, false, false,
             ],
             [
-                'g/100/100?lock=1',
+                'g/100/100/kitten?lock=',
                 100, 100, false, false, true,
             ],
             [
-                '100/100?lock=1',
+                '100/100/kitten?lock=',
                 100, 100, false, false, false,
             ],
         ];
