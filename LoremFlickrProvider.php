@@ -3,6 +3,8 @@
 namespace Xvladqt\Faker;
 
 use Faker\Provider\Base as BaseProvider;
+use InvalidArgumentException;
+use RuntimeException;
 
 /**
  * loremflickr.com provider for Faker
@@ -47,9 +49,9 @@ class LoremFlickrProvider extends BaseProvider
 		}
 
         if ($randomize) {
-            $url .= '?random='.\random_int(1,1024);
+            $url .= '?random='.mt_rand(1,1024);
         }else{
-            $url .= '?lock='.\random_int(1,1024);
+            $url .= '?lock='.mt_rand(1,1024);
         }
 
         return $baseUrl . $url;
@@ -67,7 +69,7 @@ class LoremFlickrProvider extends BaseProvider
         $dir = is_null($dir) ? sys_get_temp_dir() : $dir; // GNU/Linux / OS X / Windows compatible
         // Validate directory path
         if (!is_dir($dir) || !is_writable($dir)) {
-            throw new \InvalidArgumentException(sprintf('Cannot write to directory "%s"', $dir));
+            throw new InvalidArgumentException(sprintf('Cannot write to directory "%s"', $dir));
         }
 
         // Generate a random filename. Use the server address so that a file
@@ -81,7 +83,7 @@ class LoremFlickrProvider extends BaseProvider
         // save file
         if (function_exists('curl_exec')) {
             // use cURL
-            $fp = fopen($filepath, 'w');
+            $fp = fopen($filepath, 'wb');
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_FILE, $fp);
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
@@ -97,9 +99,9 @@ class LoremFlickrProvider extends BaseProvider
             }
         } elseif (ini_get('allow_url_fopen')) {
             // use remote fopen() via copy()
-            $success = copy($url, $filepath);
+            copy($url, $filepath);
         } else {
-            return new \RuntimeException('The image formatter downloads an image from a remote HTTP server. Therefore, it requires that PHP can request remote hosts, either via cURL or fopen()');
+            return new RuntimeException('The image formatter downloads an image from a remote HTTP server. Therefore, it requires that PHP can request remote hosts, either via cURL or fopen()');
         }
 
         return $fullPath ? $filepath : $filename;
